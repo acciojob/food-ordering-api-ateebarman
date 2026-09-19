@@ -1,6 +1,7 @@
 package com.driver;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Order {
@@ -13,12 +14,15 @@ public class Order {
 
     public void addItem(Food food) {
     	// your code goes here
+        if (food == null) {
+            throw new IllegalArgumentException("Food cannot be null");
+        }
         items.add(food);
     }
 
     public List<Food> getItems() {
     	// your code goes here
-        return items;
+        return Collections.unmodifiableList(items);
     }
 
     public double getTotalBill() {
